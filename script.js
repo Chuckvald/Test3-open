@@ -15,28 +15,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for (const [id, zone] of Object.entries(timeZones)) {
             const time = moment().tz(zone).format("HH:mm:ss");
-            document.getElementById(id).textContent = time;
-            console.log(`${id}: ${time}`); // Logg klokkene for debugging
-        }
+            const timeElement = document.getElementById(id);
+            const moonElement = document.getElementById(id + "-moon"); // Hent måne-symbol
 
-        fetchMoonPhase();  // Hent månefase én gang
-    }
+            // Oppdater tiden
+            if(timeElement) {
+                timeElement.textContent = time;
+                console.log(`${id}: ${time}`); // Logg tidene
+            } else {
+                console.error(`Element with ID ${id} not found.`);
+            }
 
-    function fetchMoonPhase() {
-        const url = "https://api.farmsense.net/v1/moonphases/?d=" + Math.floor(Date.now() / 1000);
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Moon phase data received:", data); // Debugging log
-                const moonPhase = data[0].Phase; // Hent månefasen
-                document.querySelectorAll("[id$='-moon']").forEach(moonElement => {
-                    moonElement.textContent = moonPhase; // Oppdater månedsfase
-                });
-            })
-            .catch(error => console.error("Error fetching moon phase:", error));
-    }
-
-    setInterval(updateTime, 1000);
-    updateTime(); // Initial call to set immediately
-});
+            // Oppdater månesymbolet basert på tid
+            if (moonElement) {
+                const hour = moment().tz(zone).hour();
+                if (hour >= 6 && hour < 18) {
+                    moon

@@ -17,6 +17,46 @@ nav {
     text-align: center;
 }
 
-nav ul {
-    list-style-type: none;
-    padding:
+.clock {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Tillat bryting */
+    padding: 20px;
+}
+
+.clock div {
+    background-color: #fff;
+    border: 5px solid gold; /* Gullkant */
+    border-radius: 50%; /* Gjør elementet rundt */
+    padding: 15px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column; /* For å vise tid og måne oppover */
+    align-items: center; /* Horisontal sentrering */
+    justify-content: center; /* Vertikal sentrering */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Legg til dybde med skygge */
+    transition: transform 0.2s; /* Effekt når musen hoverer */
+}
+
+.clock div:hover {
+    transform: scale(1.05); /* Øk størrelse ved hover */
+}
+
+.moon-phase {
+    width: 30px; /* Juster størrelsen på måneillustrasjonen */
+    height: 30px;
+    background-size: cover; /* For å tilpasse bakgrunnsbilde */
+    border-radius: 50%; /* Gjør det rundt */
+    margin-top: 10px; /* Litt margin mellom tiden og månesymbolet */
+}
+
+footer {
+    text-align: center;
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
