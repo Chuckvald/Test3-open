@@ -13,4 +13,10 @@ header {
 }
 
 nav {
-    margin: 20
+    margin: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding:
